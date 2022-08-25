@@ -1,5 +1,6 @@
 <template>
     <form
+        @submit.stop.prevent="addTodo"
         class="
             flex
             items-center
@@ -12,6 +13,7 @@
         "
     >
         <input
+            v-model="title"
             placeholder="Adicione um novo item ..."
             type="text"
             class="
@@ -39,7 +41,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            title: "",
+        };
+    },
+
+    methods: {
+        addTodo() {
+            if (!this.title) {
+                return false;
+            }
+
+            this.$store
+                .dispatch("addTodo", {
+                    title: this.title,
+                    completed: false,
+                })
+                .finally(() => {
+                    this.title = "";
+                });
+        },
+    },
+};
 </script>
 
 <style>
