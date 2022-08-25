@@ -14,6 +14,21 @@
       "id": 3,
       "title": "Estudar composition API",
       "completed": false
+    },
+    {
+      "title": "Estudar tailwind",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "title": "Estudar Vuex",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "title": "Estudar arrays",
+      "completed": false,
+      "id": 6
     }
   ]
 }
