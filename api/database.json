@@ -2,48 +2,43 @@
   "todos": [
     {
       "title": "Estudar javascript",
-      "completed": true,
+      "completed": false,
       "id": 1
     },
     {
       "title": "Estudar Vue Intensamente",
-      "completed": false,
+      "completed": true,
       "id": 2
     },
     {
-      "id": 3,
       "title": "Estudar composition API",
-      "completed": false
+      "completed": true,
+      "id": 3
     },
     {
       "title": "Estudar tailwind",
-      "completed": false,
+      "completed": true,
       "id": 4
     },
     {
       "title": "Estudar Vuex",
-      "completed": false,
+      "completed": true,
       "id": 5
     },
     {
       "title": "Estudar arrays",
-      "completed": false,
+      "completed": true,
       "id": 6
+    },
+    {
+      "title": "Estudar arrays",
+      "completed": true,
+      "id": 7
     },
     {
       "title": "Estudar Loading",
       "completed": false,
-      "id": 7
-    },
-    {
-      "title": "Estudar a vida real",
-      "completed": true,
       "id": 8
-    },
-    {
-      "title": "abc",
-      "completed": true,
-      "id": 9
     }
   ]
 }

@@ -5,9 +5,8 @@
             <template v-else>
                 <todo-form-add />
 
-                <todo-items />
-
-                <todo-empty />
+                <todo-items v-if="$store.state.todos.length" />
+                <todo-empty v-else />
             </template>
         </div>
     </div>
