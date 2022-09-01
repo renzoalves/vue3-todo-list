@@ -42,6 +42,15 @@ export default createStore({
       }
     },
 
+    deleteTodo(state, id){
+      const index = state.todos.findIndex( todo => todo.id === id );
+      
+      if (index >= 0){
+        state.todos.splice( index, 1);
+      }
+
+    },
+
   },
 
   //----------------------------------------------------------------------
@@ -57,9 +66,7 @@ export default createStore({
      * @param {*} param0 
      * @returns Array com a lista de tarefas.
      */
-    getTodos({
-      commit
-    }) {
+    getTodos({commit}) {
       return new Promise((resolve) => {
 
         setTimeout(() => {
@@ -74,31 +81,30 @@ export default createStore({
       })
     },
 
-    addTodo({
-      commit
-    }, data) {
+    addTodo({commit}, data) {
       return axios.post("http://127.0.0.1:3000/todos", data)
         .then((response) => {
           commit('storeTodo', response.data)
         });
     },
 
-    updateTodo({
-      commit
-    }, {
-      id,
-      data
-    }) {
+    updateTodo({commit}, {id, data}) {
       return axios.put(`http://127.0.0.1:3000/todos/${id}`, data)
         .then((response) => {
           commit('storeTodo', response.data)
         });
-
     },
 
-
+    deleteTodo( {commit}, id) {
+    return axios.delete(`http://127.0.0.1:3000/todos/${id}`)
+      .then(() => {
+        commit('deleteTodo', id);
+      });
   },
 
-  getters: {},
-  modules: {}
+
+},
+
+getters: {},
+modules: {}
 })
