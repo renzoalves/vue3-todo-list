@@ -24,8 +24,22 @@ export default createStore({
      * @param {data} payload Os dados recebidos para update.
      */
     storeTodo(state, payload) {
-      // state.todos.unshift(payload);  // Adiciona no início
-      state.todos.push(payload);  // Adiciona no final
+      const index = state.todos.findIndex(todo => todo.id === payload.id);
+
+      if (index >= 0) {
+        state.todos.splice(index, 1, payload);
+
+      } else {
+        // Adiciona no início. Esse resultado aparecerá somente na 
+        // renderização da lista, no arquivo de gravação, continuará 
+        // adicionando ao final da lista.
+        //----------------------------------------------------------------------
+        state.todos.unshift(payload);
+
+        // Adiciona no final
+        //----------------------------------------------------------------------
+        // state.todos.push(payload);  
+      }
     },
 
   },
@@ -43,7 +57,9 @@ export default createStore({
      * @param {*} param0 
      * @returns Array com a lista de tarefas.
      */
-    getTodos({commit}) {
+    getTodos({
+      commit
+    }) {
       return new Promise((resolve) => {
 
         setTimeout(() => {
@@ -58,12 +74,27 @@ export default createStore({
       })
     },
 
-    addTodo({commit}, data) {
+    addTodo({
+      commit
+    }, data) {
       return axios.post("http://127.0.0.1:3000/todos", data)
         .then((response) => {
           commit('storeTodo', response.data)
         });
-    }
+    },
+
+    updateTodo({
+      commit
+    }, {
+      id,
+      data
+    }) {
+      return axios.put(`http://127.0.0.1:3000/todos/${id}`, data)
+        .then((response) => {
+          commit('storeTodo', response.data)
+        });
+
+    },
 
 
   },
