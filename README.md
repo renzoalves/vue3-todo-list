@@ -33,7 +33,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 </div>
 
 <b>
+  
 - Vue3
 - Vuex
 - Composition API
-- Migarção Options API -> Composition API  
+- Migarção: Options API -> Composition API  
