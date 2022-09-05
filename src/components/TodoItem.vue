@@ -88,6 +88,9 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
+
 export default {
     props: {
         todo: {
@@ -96,42 +99,53 @@ export default {
         },
     },
 
-    data() {
-        return {
-            title: this.todo.title,
-            isCompleted: this.todo.completed,
-        };
-    },
+    setup(props) {
+        const store = useStore();
 
-    methods: {
-        updateTodo() {
+        const title = ref( props.todo.title);
+        const isCompleted = ref(props.todo.completed);
+
+        const updateTodo = () => {
             const payload = {
-                id: this.todo.id,
+                id: props.todo.id,
                 data: {
-                    title: this.title,
-                    completed: this.isCompleted,
+                    title: title.value,
+                    completed: isCompleted.value,
                 },
             };
-            this.$store.dispatch("updateTodo", payload);
-        },
+            store.dispatch("updateTodo", payload);
+        };
 
-        onTitleChange($evt) {
-            this.title = $evt.target.value;
-            if (!this.title) {
+        const onTitleChange = ($evt) => {
+            title.value = $evt.target.value;
+            if (!title.value) {
                 return;
             }
 
-            this.updateTodo();
-        },
+            updateTodo();
+        };
 
-        onCheckClick() {
-            this.isCompleted = !this.isCompleted;
-            this.updateTodo();
-        },
+        const onCheckClick = () => {
+            isCompleted.value = !isCompleted.value;
+            updateTodo();
+        };
 
-        onDelete() {
-            this.$store.dispatch("deleteTodo", this.todo.id);
-        },
+        const onDelete = () => {
+            store.dispatch("deleteTodo", props.todo.id);
+        };
+
+        return {
+            // variáveis
+            //----------------------------------------------------------------------
+            title,
+            isCompleted,
+
+            // métodos
+            //----------------------------------------------------------------------
+            onTitleChange,
+            onCheckClick,
+            onDelete,
+        };
     },
 };
 </script>

@@ -27,18 +27,8 @@
     },
     {
       "title": "Estudar arrays",
-      "completed": true,
-      "id": 6
-    },
-    {
-      "title": "Estudar arrays",
-      "completed": true,
-      "id": 7
-    },
-    {
-      "title": "Estudar Loading",
       "completed": false,
-      "id": 8
+      "id": 6
     }
   ]
 }
