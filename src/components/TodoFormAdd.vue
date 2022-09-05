@@ -41,28 +41,32 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
-    data() {
-        return {
-            title: "",
-        };
-    },
+    setup() {
+        const title = ref("");
+        const store = useStore();
 
-    methods: {
-        addTodo() {
-            if (!this.title) {
+        const addTodo = () => {
+            if (!title.value) {
                 return false;
             }
 
-            this.$store
+            store
                 .dispatch("addTodo", {
-                    title: this.title,
+                    title: title.value,
                     completed: false,
                 })
                 .finally(() => {
-                    this.title = "";
+                    title.value = "";
                 });
-        },
+        };
+
+        return {
+            title,
+            addTodo,
+        };
     },
 };
 </script>
