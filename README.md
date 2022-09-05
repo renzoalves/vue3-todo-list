@@ -32,7 +32,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   <img align="center" alt="css3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
 </div>
 
+<b>
 - Vue3
 - Vuex
-- Compodition API
+- Composition API
 - Migarção Options API -> Composition API  
