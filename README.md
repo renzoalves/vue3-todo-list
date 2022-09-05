@@ -25,7 +25,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### Tecnologias:
+- Tailwind
 - Vue3
 - Vuex
 - Compodition API
-- Tailwind
+- Migarção Options API -> Composition API
+
