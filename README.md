@@ -22,3 +22,10 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Tecnologias:
+- Vue3
+- Vuex
+- Compodition API
+- Tailwind
